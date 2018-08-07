@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.usitrip.dao.HotelbedsMapZoneUsMapper">
+    <select id="selectZoneNameNonQuery" resultType="com.usitrip.pojo.HotelbedsMapZoneUs">
+        SELECT
+          *
+        FROM `test`.`hotelbeds_map_zone_us`
+        WHERE `ee_date` IS NULL
+        AND `zoneName` IS NOT NULL
+    </select>
+
+    <update id="batchUpdateFullAddress" parameterType="java.util.List">
+        <foreach collection="list" separator=";" item="item">
+            UPDATE
+              test.hotelbeds_map_zone_us
+            SET
+              fullAddress = #{item.fullAddress}
+            WHERE
+              id = #{item.id}
+        </foreach>
+    </update>
+</mapper>

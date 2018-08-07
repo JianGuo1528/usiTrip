@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.usitrip.dao.PnlAirportMapper">
+    <resultMap id="pnlAirportMap" type="com.usitrip.pojo.PnlAirport">
+        <id column="IATA代码" property="iata"/>
+        <result column="机场名称" property="airportChineseName"/>
+        <result column="城市" property="city"/>
+        <result column="国家和地区" property="countryAndArea"/>
+        <result column="Airport name" property="airportName"/>
+        <result column="Location served" property="locationServed"/>
+        <result column="desId" property="desId"/>
+        <result column="desName" property="desName"/>
+        <result column="scenic_area_id" property="scenicAreaId"/>
+        <result column="flag" property="flag"/>
+
+    </resultMap>
+    <select id="findAll" resultType="com.usitrip.pojo.PnlAirport" resultMap="pnlAirportMap">
+        SELECT
+        *
+        FROM test.pnlAirport
+    </select>
+
+    <select id="findByIATA"  parameterType="string" resultType="com.usitrip.pojo.PnlAirport" resultMap="pnlAirportMap">
+        SELECT
+          *
+        FROM test.pnlAirport
+        WHERE `IATA代码` = #{iata}
+    </select>
+
+    <select id="findByCountryAndDesId"  parameterType="com.usitrip.pojo.VoQuery" resultType="com.usitrip.pojo.PnlAirport" resultMap="pnlAirportMap">
+        SELECT
+        *
+        FROM test.pnlAirport
+        WHERE `国家和地区` LIKE '%${countryAndArea}%'
+        AND `desId` IS NULL
+    </select>
+
+</mapper>

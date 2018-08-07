@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.usitrip.dao.DictMapper">
+    <resultMap id="DictResult" type="com.usitrip.pojo.Dict">
+        <id property="id" column="id"/>
+
+        <result property="type" column="type"/>
+        <result property="typeName" column="type_name"/>
+        <result property="typeNameZh" column="type_name_zh"/>
+        <result property="hotelid" column="hotelId"/>
+
+        <collection property="hotelRoomTypes" ofType="com.usitrip.pojo.HotelRoomType">
+            <id property="id" column="map_id"/>
+            <result property="hotelid" column="map_hotelId"/>
+            <result property="roomTypeId" column="room_type_id"/>
+            <result property="status" column="status"/>
+        </collection>
+    </resultMap>
+
+</mapper>

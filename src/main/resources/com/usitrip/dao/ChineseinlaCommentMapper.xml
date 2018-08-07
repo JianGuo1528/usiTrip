@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.usitrip.dao.ChineseinlaCommentMapper">
+    <resultMap id="chineseinlaCommentMapper" type="com.usitrip.pojo.ChineseinlaComment">
+        <id column="ID" property="id"/>
+        <result column="电话2" property="phone"/>
+        <result column="邮件" property="email"/>
+        <result column="微信" property="wechat"/>
+        <result column="category" property="category"/>
+    </resultMap>
+
+    <select id="selectPhoneByLen" parameterType="int" resultType="com.usitrip.pojo.ChineseinlaComment" resultMap="chineseinlaCommentMapper">
+        SELECT
+          *
+        FROM
+          nychinaren_comment
+        WHERE LENGTH(电话2) > #{len}
+    </select>
+
+</mapper>

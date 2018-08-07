@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.usitrip.dao.ChineseinlaSFMapper">
+    <insert id="insertNewPhoneContact" parameterType="java.util.List">
+        <foreach collection="list" separator=";" item="item">
+            INSERT INTO nychinaren_f_phone(category, phone)
+            VALUES(#{item.category}, #{item.phone})
+        </foreach>
+    </insert>
+
+    <insert id="insertNewEmailContact" parameterType="java.util.List">
+        <foreach collection="list" separator=";" item="item">
+            INSERT INTO nychinaren_f_email(category, email)
+            VALUES(#{item.category}, #{item.email})
+        </foreach>
+    </insert>
+
+    <insert id="insertNewWechatContact" parameterType="java.util.List">
+        <foreach collection="list" separator=";" item="item">
+            INSERT INTO nychinaren_f_wechat(category, wechat)
+            VALUES(#{item.category}, #{item.wechat})
+        </foreach>
+    </insert>
+</mapper>
