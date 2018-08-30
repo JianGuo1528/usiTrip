@@ -416,13 +416,6 @@ public class UpdateData {
         DictMapper dictMapper = sqlSession.getMapper(DictMapper.class);
 
         List<Dict> dicts = dictMapper.selectByExample()
-                .where(type, isEqualTo("room"))
-                .and(dict.hotelid, isEqualTo(0), or(dict.hotelid, isEqualTo(123)))
-                .and(dict.id, isNotIn(select(roomTypeId)
-                        .from(hotelRoomType)
-                        .where(status, isEqualTo(0))
-                        .and(hotelRoomType.hotelid, isEqualTo(123))))
-                .orderBy(sortColumn("hotelId"))
                 .build()
                 .execute();
 
