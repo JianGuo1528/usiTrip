@@ -327,7 +327,7 @@ public class UpdateData {
         List<WorldCity> worldCities = worldCityMapper.selectByExample().where(worldCity.country, isEqualTo("中国"), and(cityEn, isLike("% %"))).build().execute();
         System.out.println(worldCities);
 
-        Demo05 demo05 = new Demo05();
+       /* Demo05 demo05 = new Demo05();
 
         Gson gson = new Gson();
         int i = 1;
@@ -345,7 +345,7 @@ public class UpdateData {
             System.out.println("正在处理: " + i++);
         }
 
-        sqlSession.commit();
+        sqlSession.commit();*/
         sqlSession.close();
     }
 
