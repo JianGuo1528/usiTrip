@@ -205,7 +205,7 @@ public class UpdateData {
     @Test
     public void test04() throws IOException {
         String resource = "sqlMapConfig.xml";
-        InputStream inputStream = Resources.getResourceAsStream(resource);
+        InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(resource);;
 
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 
@@ -386,7 +386,7 @@ public class UpdateData {
                         for (AddressBean.ResultsBean.AddressComponentsBean address_component : address_components) {
                             if (address_component.getTypes().get(0).trim().equalsIgnoreCase("locality")) {
                                 worldCityAbroad.setCityEn(address_component.getLong_name());
-                                worldCityAbroadMapper.updateByPrimaryKeySelective(worldCityAbroad);
+//                                worldCityAbroadMapper.updateByPrimaryKeySelective(worldCityAbroad);
                                 break;
                             }
                         }
@@ -407,7 +407,7 @@ public class UpdateData {
     @Test
     public void test08() throws IOException {
         String resource = "sqlMapConfig.xml";
-        InputStream inputStream = Resources.getResourceAsStream(resource);
+        InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(resource);
 
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 
